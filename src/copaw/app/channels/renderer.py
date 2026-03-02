@@ -114,6 +114,8 @@ class MessageRenderer:
                             )
                         except TypeError:
                             args_str = str(args)
+                    # Prevent code fence breakout in markdown renderers.
+                    args_str = args_str.replace("```", "``\\`")
                     args_preview = (
                         args_str[:200] + "..."
                         if len(args_str) > 200
